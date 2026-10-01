@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #fbf8f3;
+  --color-cream: #f6f1e8;
+  --color-sand: #ece4d6;
+  --color-linen: #e3d9c8;
+  --color-ink: #1f2a22;
+  --color-ink-soft: #4a524a;
+  --color-muted: #6f7468;
+  --color-sage: #8d9a7c;
+  --color-sage-light: #e6eadc;
+  --color-olive: #66734a;
+  --color-olive-dark: #4f5a37;
+  --color-gold: #b4975a;
+  --color-gold-light: #d8c49a;
+
+  --font-serif: var(--font-display), "Times New Roman", serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-sage-light); }
+  :focus-visible {
+    outline: 2px solid var(--color-olive);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) { .container-page { padding-inline: 2.5rem; } }
+
+  .section {
+    padding-block: 5.5rem;
+  }
+  @media (min-width: 768px) { .section { padding-block: 8.5rem; } }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-olive-dark);
+  }
+  .eyebrow::after {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-gold);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0 1.75rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background-color 0.3s var(--ease-soft), color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--color-olive); color: #fff; }
+  .btn-primary:hover { background: var(--color-olive-dark); }
+  .btn-outline { border: 1px solid color-mix(in srgb, var(--color-ink) 28%, transparent); color: var(--color-ink); background: transparent; }
+  .btn-outline:hover { border-color: var(--color-ink); background: color-mix(in srgb, var(--color-ivory) 70%, transparent); }
+  .btn-light { background: var(--color-ivory); color: var(--color-ink); }
+  .btn-light:hover { background: #fff; }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-soft);
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s var(--ease-soft), transform 0.9s var(--ease-soft);
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  .no-js .reveal { opacity: 1; transform: none; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-fade-up { animation: fade-up 0.9s var(--ease-soft) both; }
+.animate-fade-up-delay { animation: fade-up 0.9s 0.15s var(--ease-soft) both; }
+.animate-fade-up-delay-2 { animation: fade-up 0.9s 0.3s var(--ease-soft) both; }
+
+@keyframes step-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-step { animation: step-in 0.45s var(--ease-soft) both; }
