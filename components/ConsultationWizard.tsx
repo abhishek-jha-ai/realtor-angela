@@ -98,6 +98,9 @@ export default function ConsultationWizard() {
       if (!res.ok) throw new Error(String(res.status));
       trackEvent("consultation_submitted", { intent: lead.intent, location: lead.location, timeline: lead.timeline });
       setStatus("done");
+      requestAnimationFrame(() =>
+        document.getElementById("consultation")?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      );
     } catch {
       setStatus("error");
     }

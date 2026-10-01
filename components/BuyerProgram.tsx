@@ -41,11 +41,10 @@ export default function BuyerProgram() {
           )}
           <p className="mx-auto mt-7 max-w-xl text-[1.02rem] leading-relaxed text-ink-soft">{buyerPrograms.intro}</p>
 
-          <ul className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-x-2 gap-y-3 text-[0.95rem] text-ink">
-            {buyerPrograms.roles.map((r, i) => (
-              <li key={r} className="flex items-center gap-2">
-                {i > 0 && <span aria-hidden className="text-gold">·</span>}
-                <span className="rounded-full px-1">{r}</span>
+          <ul className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-2.5 text-[0.92rem] text-ink">
+            {buyerPrograms.roles.map((r) => (
+              <li key={r} className="rounded-full border border-olive/20 bg-ivory/60 px-4 py-1.5">
+                {r}
               </li>
             ))}
           </ul>

@@ -77,6 +77,11 @@
     text-transform: uppercase;
     color: var(--color-olive-dark);
   }
+  @media (max-width: 639px) {
+    .eyebrow { letter-spacing: 0.22em; }
+    .eyebrow.justify-center { text-align: center; }
+    .eyebrow.justify-center::after { display: none; }
+  }
   .eyebrow::after {
     content: "";
     width: 2.5rem;

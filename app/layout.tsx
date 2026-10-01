@@ -65,11 +65,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        {siteConfig.showDemoBadge && <DemoBadge text={siteConfig.demoBadgeText} />}
         <Header />
         <main id="main">{children}</main>
         <Footer />
         <MobileStickyCTA />
-        {siteConfig.showDemoBadge && <DemoBadge text={siteConfig.demoBadgeText} />}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(agentJsonLd()) }}
